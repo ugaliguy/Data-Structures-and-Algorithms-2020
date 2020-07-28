@@ -3,17 +3,9 @@ import java.io.*;
 
 public class MaxPairwiseProduct {
     static int getMaxPairwiseProduct(int[] numbers) {
-        int max_product = 0;
         int n = numbers.length;
-
-        for (int first = 0; first < n; ++first) {
-            for (int second = first + 1; second < n; ++second) {
-                max_product = Math.max(max_product,
-                    numbers[first] * numbers[second]);
-            }
-        }
-
-        return max_product;
+        Arrays.sort(numbers);
+        return numbers[n-1]*numbers[n-2];
     }
 
     public static void main(String[] args) {
