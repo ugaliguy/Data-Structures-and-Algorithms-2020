@@ -59,10 +59,10 @@ public class FibonacciSumLastDigit {
 	}
 	
     private static long getFibonacciSumEfficient(long n) {
-    	int p = pisanoPeriod(10);
+//    	int p = pisanoPeriod(10);
     	ArrayList<Integer> lastDigits = pisano(10);
     	
-    	System.out.println(p);
+//    	System.out.println(p);
     	
         if (n <= 1)
             return n;
