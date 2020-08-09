@@ -1,23 +1,6 @@
 import java.util.*;
 
 public class FibonacciSumLastDigit {
-//    private static long getFibonacciSumNaive(long n) {
-//        if (n <= 1)
-//            return n;
-//
-//        long previous = 0;
-//        long current  = 1;
-//        long sum      = 1;
-//
-//        for (long i = 0; i < n - 1; ++i) {
-//            long tmp_previous = previous;
-//            previous = current % 10;
-//            current = (tmp_previous + current) % 10;
-//            sum = (sum + current) % 10;
-//        }
-//
-//        return sum % 10;
-//    }
     
 	private static int pisanoPeriod(long m) {
 		long prev = 0;
@@ -46,23 +29,11 @@ public class FibonacciSumLastDigit {
 			remainders.add((remainders.get(i-1) + remainders.get(i-2)) % m);
 			i += 1;
 		} while (remainders.get(i-2) != 0 || remainders.get(i-1) != 1);
-//		for (int i = 2; i < m*m; i++) {
-//			remainders[i] = (remainders[i-1] + remainders[i-2]) % m;
-//			if (remainders[i-1] == 0 && remainders[i] == 1) {
-//				break;
-//			}
-//		}
-//		for (Integer d: remainders) {
-//    		System.out.print(d);
-//    	}
 		return remainders;
 	}
 	
     private static long getFibonacciSumEfficient(long n) {
-//    	int p = pisanoPeriod(10);
     	ArrayList<Integer> lastDigits = pisano(10);
-    	
-//    	System.out.println(p);
     	
         if (n <= 1)
             return n;
