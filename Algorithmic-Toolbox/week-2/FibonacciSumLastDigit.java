@@ -57,6 +57,7 @@ public class FibonacciSumLastDigit {
         long n = scanner.nextLong();
         long s = getFibonacciSumEfficient(n);
         System.out.println(s);
+        scanner.close();
     }
 }
 
