@@ -36,24 +36,32 @@ public class FibonacciSumLastDigit {
 		return count;
 	}
 	
-	private static int[] pisano(int m) {
+	private static ArrayList<Integer> pisano(int m) {
 		int p = pisanoPeriod(m);
-		int[] remainders = new int[m*m];
-		remainders[0] = 0;
-		remainders[1] = 1;
-		for (int i = 2; i < m*m; i++) {
-			remainders[i] = (remainders[i-1] + remainders[i-2]) % m;
-			if (remainders[i-1] == 0 && remainders[i] == 1) {
-				break;
-			}
-		}
+		ArrayList<Integer> remainders = new ArrayList<Integer>();
+		int i = 2;
+		remainders.add(0);
+		remainders.add(1);
+		do {
+			remainders.add((remainders.get(i-1) + remainders.get(i-2)) % m);
+			i += 1;
+		} while (remainders.get(i-2) != 0 || remainders.get(i-1) != 1);
+//		for (int i = 2; i < m*m; i++) {
+//			remainders[i] = (remainders[i-1] + remainders[i-2]) % m;
+//			if (remainders[i-1] == 0 && remainders[i] == 1) {
+//				break;
+//			}
+//		}
+//		for (Integer d: remainders) {
+//    		System.out.print(d);
+//    	}
 		return remainders;
 	}
 	
     private static long getFibonacciSumEfficient(long n) {
     	int p = pisanoPeriod(10);
-    	int[] lastDigits = pisano(p);
-    	System.out.println(Arrays.toString(lastDigits));
+    	ArrayList<Integer> lastDigits = pisano(10);
+    	
     	System.out.println(p);
     	
         if (n <= 1)
