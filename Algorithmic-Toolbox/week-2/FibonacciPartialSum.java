@@ -1,24 +1,6 @@
 import java.util.*;
 
 public class FibonacciPartialSum {
-//    private static long getFibonacciPartialSumNaive(long from, long to) {
-//        long sum = 0;
-//
-//        long current = 0;
-//        long next  = 1;
-//
-//        for (long i = 0; i <= to; ++i) {
-//            if (i >= from) {
-//                sum += current;
-//            }
-//
-//            long new_current = next;
-//            next = next + current;
-//            current = new_current;
-//        }
-//
-//        return sum % 10;
-//    }
 	
 	private static int pisanoPeriod(long m) {
 		long prev = 0;
@@ -49,6 +31,7 @@ public class FibonacciPartialSum {
 		} while (remainders.get(i-2) != 0 || remainders.get(i-1) != 1);
 		return remainders;
 	}
+	
 	private static long getFibonacciPartialSumEfficient(long from, long to) {
 		
 		if (to <= 1)
