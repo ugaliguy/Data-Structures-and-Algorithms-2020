@@ -1,23 +1,7 @@
 import java.util.*;
 
 public class FibonacciSumSquares {
-//    private static long getFibonacciSumSquaresNaive(long n) {
-//        if (n <= 1)
-//            return n;
-//
-//        long previous = 0;
-//        long current  = 1;
-//        long sum      = 1;
-//
-//        for (long i = 0; i < n - 1; ++i) {
-//            long tmp_previous = previous;
-//            previous = current;
-//            current = tmp_previous + current;
-//            sum += current * current;
-//        }
-//
-//        return sum % 10;
-//    }
+
 	private static int pisanoPeriod(long m) {
 		long prev = 0;
 		long curr = 1;
@@ -59,18 +43,13 @@ public class FibonacciSumSquares {
 		ArrayList<Integer> ones = pisano(10);
 		int p = pisanoPeriod(10);
 
-        long previous = 0;
-        long current  = 1;
-        long sum      = 1;
+		// Take advantage of the identity F_0^2 + F_1^2 + F_2^2 + ... +F_n^2 = F_n * F_(n+1)
+		
+        long n1 = n % p;
+        long np1  = (n+1) % p;
+        long product = (ones.get((int)n1)*ones.get((int)np1)) % p;
 
-        for (long i = 0; i < n - 1; ++i) {
-            long tmp_previous = previous;
-            previous = current;
-            current = tmp_previous + current;
-            sum += current * current;
-        }
-
-        return sum % 10;
+        return product % 10;
     }
     
     public static void main(String[] args) {
