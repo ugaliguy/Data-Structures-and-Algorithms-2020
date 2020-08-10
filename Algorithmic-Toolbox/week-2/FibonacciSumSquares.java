@@ -29,10 +29,7 @@ public class FibonacciSumSquares {
 			remainders.add((remainders.get(i-1) + remainders.get(i-2)) % m);
 			i += 1;
 		} while (i < p);
-//		for (Integer d: remainders) {
-//			System.out.print(d);
-//		}
-//		System.out.println(" ");
+
 		return remainders;
 	}
 	
