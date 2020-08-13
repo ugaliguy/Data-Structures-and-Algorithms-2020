@@ -2,24 +2,30 @@ import java.util.*;
 import java.io.*;
 
 public class CarFueling {
+	
     static int computeMinRefills(int dist, int tank, int[] stops) {
     	int refills = 0;
     	int current = 0;
     	int last = 0;
-    	
-    	while (current < (dist - 1)) {
+    	int n =stops.length;
+    	int[] x = new int[n+2];
+    	x[0] = 0;
+    	x[n+1] = dist;
+    	for (int i = 0; i < n; i++) {
+    		x[i+1] = stops[i];
+    	}
+
+    	while (current <= n) {
+
     		last = current;
-    		System.out.println(current + 1);
-    		while ((current < stops.length - 1) && (stops[current + 1] - stops[last] <= tank)) {
+    		 
+    		while ((current <= n) && (x[current + 1] - x[last] <= tank)) {
     			current += 1;
-    			if (current == dist - 1) {
-    				break;
-    			}
     		}
     		if (current == last) {
     			return -1;
     		}
-    		if (current < last - 1) {
+    		if (current <= n) {
     			refills += 1;
     		}
     	}
