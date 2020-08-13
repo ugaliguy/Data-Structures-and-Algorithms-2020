@@ -1,8 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class CarFueling {
-	
+public class CarFueling {	
     static int computeMinRefills(int dist, int tank, int[] stops) {
     	int refills = 0;
     	int current = 0;
@@ -14,7 +13,6 @@ public class CarFueling {
     	for (int i = 0; i < n; i++) {
     		x[i+1] = stops[i];
     	}
-
     	while (current <= n) {
 
     		last = current;
