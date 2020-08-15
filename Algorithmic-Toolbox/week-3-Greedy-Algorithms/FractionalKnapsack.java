@@ -13,12 +13,13 @@ public class FractionalKnapsack {
     	Comparator<double[]> c = (X, Y) -> X[0] / X[1] < Y[0] / Y[1] ? 1 : -1;
     	Arrays.sort(ratios, c);
         double value = 0;
-        //write your code here
-//        for (int i = 0; i < n; i++) {
-//        	System.out.println(ratios[i]);
-//        }
-        System.out.print(Arrays.deepToString(ratios));
-
+        int j = 0;
+        while (capacity > 0) {
+        	double a = Math.min(ratios[0][1], capacity);
+        	value += a*ratios[j][0]/ratios[j][1];
+        	capacity -= a;
+        	j += 1;
+        }
         return value;
     }
 
