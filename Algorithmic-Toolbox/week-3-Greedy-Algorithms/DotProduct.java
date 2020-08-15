@@ -1,9 +1,12 @@
 import java.util.*;
+import java.util.Arrays;
 
 public class DotProduct {
     private static long maxDotProduct(int[] a, int[] b) {
         //write your code here
         long result = 0;
+        Arrays.sort(a);
+        Arrays.sort(b);
         for (int i = 0; i < a.length; i++) {
             result += a[i] * b[i];
         }
