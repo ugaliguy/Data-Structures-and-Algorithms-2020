@@ -1,9 +1,23 @@
 import java.util.Scanner;
+import java.util.Comparator;
+import java.util.Arrays;
 
 public class FractionalKnapsack {
     private static double getOptimalValue(int capacity, int[] values, int[] weights) {
+    	int n = values.length;
+    	double[][] ratios = new double[n][2];
+    	for (int i = 0; i < n; i++) {
+    		ratios[i][0] = values[i];
+    		ratios[i][1] = weights[i];
+    	}
+    	Comparator<double[]> c = (X, Y) -> X[0] / X[1] < Y[0] / Y[1] ? 1 : -1;
+    	Arrays.sort(ratios, c);
         double value = 0;
         //write your code here
+//        for (int i = 0; i < n; i++) {
+//        	System.out.println(ratios[i]);
+//        }
+        System.out.print(Arrays.deepToString(ratios));
 
         return value;
     }
