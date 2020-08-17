@@ -3,9 +3,15 @@ import java.util.*;
 public class LargestNumber {
     private static String largestNumber(String[] a) {
         //write your code here
+    	Comparator<String> comp = (x,y) -> {
+    		int xy = Integer.parseInt(x + y);
+    		int yx = Integer.parseInt(y + x);
+    		return xy > yx ? -1: 1;
+    	};
+    	Arrays.sort(a, comp);
         String result = "";
-        for (int i = 0; i < a.length; i++) {
-            result += a[i];
+        for (String number: a) {
+            result += number;
         }
         return result;
     }
