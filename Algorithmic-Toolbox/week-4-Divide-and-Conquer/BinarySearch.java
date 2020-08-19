@@ -4,14 +4,15 @@ import java.util.*;
 public class BinarySearch {
 
     static int binarySearch(int[] a, int low, int high, int x) {
-        int left = 0;
-        int right = a.length - 1;
-        	
+//        int left = 0;
+//        int right = a.length - 1;
+//        	
         //write your code here
         if (high < low) {
-        	return low - 1;
+        	return -1;
+//        	return low - 1 // Returns the index after which you could insert the element if it's not in the array
         }
-        int mid =  (low + (high - low)/2);
+        int mid =  (low + high)/2;
         if (x == a[mid]) {
         	return mid;
         }
