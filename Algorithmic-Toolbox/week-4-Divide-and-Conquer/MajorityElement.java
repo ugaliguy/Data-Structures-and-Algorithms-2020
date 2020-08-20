@@ -17,7 +17,6 @@ public class MajorityElement {
     	for (int i = 0; i < n; i++) {
     		if (counts.containsKey(a[i])) {
     			int count = counts.get(a[i]) + 1;
-    			System.out.println(count);
     			if (count > mid) {
     				return 1;
     			}
@@ -29,7 +28,7 @@ public class MajorityElement {
     			counts.put(a[i], 1);
     		}
     	}
-        return 0;
+        return -1;
     }
 
     public static void main(String[] args) {
