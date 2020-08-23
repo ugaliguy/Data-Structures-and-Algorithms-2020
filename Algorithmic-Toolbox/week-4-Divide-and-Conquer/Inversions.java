@@ -23,6 +23,7 @@ public class Inversions {
         }
         int[] b = new int[n];
         System.out.println(getNumberOfInversions(a, b, 0, a.length));
+        scanner.close();
     }
 }
 
