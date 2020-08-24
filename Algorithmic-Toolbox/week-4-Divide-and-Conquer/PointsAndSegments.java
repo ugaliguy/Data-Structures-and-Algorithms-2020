@@ -1,9 +1,17 @@
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class PointsAndSegments {
 
     private static int[] fastCountSegments(int[] starts, int[] ends, int[] points) {
         int[] cnt = new int[points.length];
+        int n = starts.length;
+        HashMap<Integer,Integer> segments = new HashMap<Integer,Integer>();
+        for (int i = 0; i < n; i++) {
+        	segments.put(starts[i], ends[i]);
+        }
+        
         //write your code here
         return cnt;
     }
@@ -36,7 +44,7 @@ public class PointsAndSegments {
             points[i] = scanner.nextInt();
         }
         //use fastCountSegments
-        int[] cnt = naiveCountSegments(starts, ends, points);
+        int[] cnt = fastCountSegments(starts, ends, points);
         for (int x : cnt) {
             System.out.print(x + " ");
         }
