@@ -13,6 +13,7 @@ public class PointsAndSegments {
         }
         
         //write your code here
+        System.out.println(segments);
         return cnt;
     }
 
