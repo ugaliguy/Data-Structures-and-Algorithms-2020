@@ -112,6 +112,7 @@ public class PointsAndSegments {
         for (int x : cnt) {
             System.out.print(x + " ");
         }
+        scanner.close();
     }
 }
 
