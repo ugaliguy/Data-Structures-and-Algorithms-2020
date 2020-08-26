@@ -28,17 +28,27 @@ public class PointsAndSegments {
         Pair[] pairs = new Pair[n*2 + p];
         HashMap<Integer,ArrayList<Integer>> pointsMap = new HashMap<Integer,ArrayList<Integer>>();
         
+        System.out.println(Arrays.toString(starts));
+        System.out.println(Arrays.toString(ends));
         //write your code here
         //Label each point as follows starts:1, ends:3 and points:2
         for(int start:starts)
             pairs[i] = new Pair(start,1);
+        	System.out.print("start i = ");
+        	System.out.print(i);
+        	System.out.print(" start =  ");
+        	System.out.println(pairs[i]);
         	i += 1;
         	
         for(int end:ends)
             pairs[i] = new Pair(end,3);
+        	System.out.print("end i = ");
+        	System.out.print(i);
+        	System.out.print(" end =  ");
+        	System.out.println(pairs[i]);
             i += 1;
             
-        for(int j=0; j<points.length; j++) {
+        for(int j=0; j < p; j++) {
         	pairs[i]=new Pair(points[j],2);
         	i += 1;
         	if (pointsMap.containsKey(points[j])) {
@@ -52,7 +62,9 @@ public class PointsAndSegments {
         }
         
         for (Pair pair: pairs) {
-        	System.out.println(pair.toString());
+//        	System.out.print("FARTZ: ");
+//        	System.out.println(pair.toString());
+        	System.out.println(pair);
         }
         
         Arrays.sort(pairs, new Comparator<Pair>() {
@@ -102,7 +114,11 @@ public class PointsAndSegments {
         int[] points = new int[m];
         for (int i = 0; i < n; i++) {
             starts[i] = scanner.nextInt();
+//            System.out.print("start = ");
+//        	System.out.println(starts[i]);
             ends[i] = scanner.nextInt();
+//            System.out.print("end = ");
+//        	System.out.println(ends[i]);
         }
         for (int i = 0; i < m; i++) {
             points[i] = scanner.nextInt();
