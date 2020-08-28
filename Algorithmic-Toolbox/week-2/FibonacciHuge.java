@@ -18,9 +18,6 @@ public class FibonacciHuge {
 //    }
     
 	private static ArrayList<Long> pisanoPeriod(long m) {
-//		long prev = 0;
-//		long curr = 1;
-//		long next = 0;
 		long result = 1;
 		ArrayList<Long> pisano = new ArrayList<Long>();
 		pisano.add(0L);
@@ -34,17 +31,6 @@ public class FibonacciHuge {
 				break;
 			}
 		}
-//		System.out.println(Arrays.toString(pisano.toArray()));
-//		System.out.println(pisano.size());
-//		for (long i = 0; i < m*m; i++) {
-//			next = (prev + curr) % m;
-//			prev = curr;
-//			curr = next;
-//			if (prev == 0 && curr == 1) {
-//				count = i + 1;
-//				break;
-//			}
-//		}
 		return pisano;
 	}
 	
@@ -52,22 +38,8 @@ public class FibonacciHuge {
         ArrayList<Long> p = pisanoPeriod(m);
         int period = p.size() - 2;
 //        System.out.println(p);
-        long remainder = n % period;
-//        System.out.println(n);
-//        if (m <= 1) {
-//        	return m;
-//        }
-//        long prev = 0;
-//        long curr = 1;
-//        long next = 1;
-//        for (long i = 0; i < n-1; i++) {
-//        	next = (prev + curr) % m;
-//        	prev = curr;
-//        	curr = next;
-////        	System.out.println(next);
-//        }
-        
-        return remainder;
+        Long remainder = n % period;
+        return p.get(remainder.intValue());
     }
     
     public static void main(String[] args) {
