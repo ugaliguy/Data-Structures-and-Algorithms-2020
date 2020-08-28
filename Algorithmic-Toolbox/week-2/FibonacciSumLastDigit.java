@@ -54,8 +54,9 @@ public class FibonacciSumLastDigit {
 //        return sum % 10;
     	ArrayList<Long> p = pisano(10);
         int period = p.size() - 2;
-//        System.out.println(p);
-        Long remainder = n+2 % period;
+//        System.out.println(period);
+        Long remainder =(n+2) % period;
+        System.out.println(remainder);
         return p.get(remainder.intValue()) - 1;
     }
     
