@@ -6,6 +6,9 @@ public class Fibonacci {
 //      return n;
 //
 //    return calc_fib(n - 1) + calc_fib(n - 2);
+	  if (n == 0) {
+		  return 0;
+	  }
 	  int[] fib = new int[n+1];
 	  fib[0] = 0;
 	  fib[1] = 1;
