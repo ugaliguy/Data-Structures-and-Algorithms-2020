@@ -56,7 +56,7 @@ public class FibonacciSumLastDigit {
         int period = p.size() - 2;
 //        System.out.println(period);
         Long remainder =(n+2) % period;
-        System.out.println(remainder);
+//        System.out.println(remainder);
         return p.get(remainder.intValue()) - 1;
     }
     
