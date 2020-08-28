@@ -57,7 +57,8 @@ public class FibonacciSumLastDigit {
 //        System.out.println(period);
         Long remainder =(n+2) % period;
 //        System.out.println(remainder);
-        return p.get(remainder.intValue()) - 1;
+        Long result = p.get(remainder.intValue());
+        return (result == 0) ? 9 : result - 1;
     }
     
     public static void main(String[] args) {
