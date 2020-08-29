@@ -14,7 +14,7 @@ public class FractionalKnapsack {
     	Arrays.sort(ratios, c);
         double value = 0;
         int j = 0;
-        while (capacity > 0) {
+        while (capacity > 0 && j < n) {
         	double a = Math.min(ratios[0][1], capacity);
         	value += a*ratios[j][0]/ratios[j][1];
         	capacity -= a;
