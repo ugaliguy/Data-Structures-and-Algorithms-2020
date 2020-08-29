@@ -19,12 +19,12 @@ public class FibonacciPartialSum {
 		return count;
 	}
 	
-	private static ArrayList<Integer> pisano(int m) {
+	private static ArrayList<Long> pisano(int m) {
 		int p = pisanoPeriod(m);
-		ArrayList<Integer> remainders = new ArrayList<Integer>();
+		ArrayList<Long> remainders = new ArrayList<Long>();
 		int i = 2;
-		remainders.add(0);
-		remainders.add(1);
+		remainders.add(0L);
+		remainders.add(1L);
 		do {
 			remainders.add((remainders.get(i-1) + remainders.get(i-2)) % m);
 			i += 1;
@@ -37,31 +37,16 @@ public class FibonacciPartialSum {
 		if (to <= 1)
             return to;
 		
-		ArrayList<Integer> ones = pisano(10);
-		int p = pisanoPeriod(10);
-//		System.out.println(p);
-		int m = (int) from % p;
-		int n = (int) to % p;
-		
-		// Take advantage of the identity F_0 + F_1 + F_2 + ... +F_n = F_(n+2) - 1
-		// Then F_from + ... F_to = F_(to + 2) - 1 - (F_(from + 1) - 1) = F_(to + 2) - F_(from + 1)
-		
-		ArrayList<Integer> fib = new ArrayList<>();
-        fib.add(0);
-        fib.add(1);
-        
-        for (int i = 2; i <= Math.max(m, n) + 2; i++) {
-        	fib.add((fib.get(i-2) + fib.get(i-1)) % 10);
-        }
-        
-        int r1 = fib.get(m+1);
-        int r2 = fib.get(n+2);
-        if (r2 >= r1) {
-        	return r2 - r1;
-        }
-        else {
-        	return 10 + r2 - r1;
-        }
+		ArrayList<Long> p = pisano(10);
+        int period = p.size() - 2;
+        Long m = from % period;
+		Long n = to % period;
+//        System.out.println(period);
+        Long f2 =(n+2) % period;
+        Long f1 =(m+1) % period;
+//        System.out.println(remainder);
+        Long result = p.get(f2.intValue()) - p.get(f1.intValue());
+        return (result < 0) ? result + 10 : result;
 
     }
     
