@@ -35,23 +35,6 @@ public class FibonacciSumLastDigit {
 	}
 	
     private static long getFibonacciSumEfficient(long n) {
-//    	ArrayList<Integer> lastDigits = pisano(10);
-//    	
-//        if (n <= 1)
-//            return n;
-//
-//        long previous = 0;
-//        long current  = 1;
-//        long sum      = 1;
-//
-//        for (long i = 0; i < n - 1; ++i) {
-//            long tmp_previous = previous;
-//            previous = current % 10;
-//            current = (tmp_previous + current) % 10;
-//            sum = (sum + current) % 10;
-//        }
-//
-//        return sum % 10;
     	ArrayList<Long> p = pisano(10);
         int period = p.size() - 2;
 //        System.out.println(period);
