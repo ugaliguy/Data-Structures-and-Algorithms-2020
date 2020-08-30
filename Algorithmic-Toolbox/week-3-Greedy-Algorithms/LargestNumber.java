@@ -6,7 +6,7 @@ public class LargestNumber {
     	Comparator<String> comp = (x,y) -> {
     		int xy = Integer.parseInt(x + y);
     		int yx = Integer.parseInt(y + x);
-    		return xy > yx ? -1: 1;
+    		return xy >= yx ? -1: 1;
     	};
     	Arrays.sort(a, comp);
         String result = "";
