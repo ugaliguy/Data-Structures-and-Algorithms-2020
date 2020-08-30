@@ -12,7 +12,7 @@ public class BinarySearch {
         	return -1;
 //        	return low - 1 // Returns the index after which you could insert the element if it's not in the array
         }
-        int mid =  (low + high)/2;
+//        int mid =  (low + high)/2;
 //        if (x == a[mid]) {
 //        	return mid;
 //        }
@@ -24,7 +24,7 @@ public class BinarySearch {
 //        }
 //        return -1;
         while (low <= high) {
-//            int mid = low + (high - low) / 2;
+            int mid = low + (high - low) / 2;
             if (a[mid] == x) {
                 return mid;
             } else if (x > a[mid]) {
