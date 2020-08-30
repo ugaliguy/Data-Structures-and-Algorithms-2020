@@ -13,16 +13,28 @@ public class BinarySearch {
 //        	return low - 1 // Returns the index after which you could insert the element if it's not in the array
         }
         int mid =  (low + high)/2;
-        if (x == a[mid]) {
-        	return mid;
-        }
-        else if (x < a[mid]) {
-        	return binarySearch(a, low, mid - 1, x);
-        }
-        else {
-        	return binarySearch(a, mid + 1, high, x);
-        }
+//        if (x == a[mid]) {
+//        	return mid;
+//        }
+//        else if (x < a[mid]) {
+//        	return binarySearch(a, low, mid - 1, x);
+//        }
+//        else {
+//        	return binarySearch(a, mid + 1, high, x);
+//        }
 //        return -1;
+        while (low <= high) {
+//            int mid = low + (high - low) / 2;
+            if (a[mid] == x) {
+                return mid;
+            } else if (x > a[mid]) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        
+        return -1;
     }
 
     static int linearSearch(int[] a, int x) {
