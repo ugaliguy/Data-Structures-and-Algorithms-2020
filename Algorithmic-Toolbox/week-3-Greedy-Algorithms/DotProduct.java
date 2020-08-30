@@ -8,7 +8,7 @@ public class DotProduct {
         Arrays.sort(a);
         Arrays.sort(b);
         for (int i = 0; i < a.length; i++) {
-            result += a[i] * b[i];
+            result += (long)a[i] * (long)b[i];
         }
         return result;
     }
