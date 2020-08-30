@@ -3,26 +3,13 @@ import java.util.*;
 
 public class BinarySearch {
 
-    static int binarySearch(int[] a, int low, int high, int x) {
-//        int left = 0;
-//        int right = a.length - 1;
-//        	
+    static int binarySearch(int[] a, int low, int high, int x) {       	
         //write your code here
         if (high < low) {
         	return -1;
 //        	return low - 1 // Returns the index after which you could insert the element if it's not in the array
         }
-//        int mid =  (low + high)/2;
-//        if (x == a[mid]) {
-//        	return mid;
-//        }
-//        else if (x < a[mid]) {
-//        	return binarySearch(a, low, mid - 1, x);
-//        }
-//        else {
-//        	return binarySearch(a, mid + 1, high, x);
-//        }
-//        return -1;
+
         while (low <= high) {
             int mid = low + (high - low) / 2;
             if (a[mid] == x) {
