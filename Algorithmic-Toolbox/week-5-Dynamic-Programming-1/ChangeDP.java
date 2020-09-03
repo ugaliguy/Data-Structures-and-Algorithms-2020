@@ -3,7 +3,16 @@ import java.util.Scanner;
 public class ChangeDP {
     private static int getChange(int m) {
         //write your code here
-        return m / 4;
+    	int[] change = new int[m+1];
+    	int[] denoms = {1,3,4};
+    	change[0] = 0;
+    	for (int i = 0; i <= m; i++) {
+    		change[i] = Integer.MAX_VALUE;
+    		for (int d : denoms) {
+    			change[i] = Math.min(change[i], change[m-d] + 1);
+    		}
+    	}
+        return change[m];
     }
 
     public static void main(String[] args) {
