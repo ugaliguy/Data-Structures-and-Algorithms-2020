@@ -3,18 +3,6 @@ import java.util.*;
 public class PrimitiveCalculator {
     private static List<Integer> optimal_sequence(int n) {
         List<Integer> sequence = new ArrayList<Integer>();
-//        while (n >= 1) {
-//            sequence.add(n);
-//            int n3 = n % 3;
-//            int n2 = n % 2;
-//            if (n % 3 == 0) {
-//                n /= 3;
-//            } else if (n % 2 == 0) {
-//                n /= 2;
-//            } else {
-//                n -= 1;
-//            }
-//        }
         int[] minOperation = new int[n + 1];
         int[] path = new int[n + 1];
 
@@ -39,6 +27,9 @@ public class PrimitiveCalculator {
             sequence.add(n);
             n = path[n];
         }
+        
+//        System.out.println(Arrays.toString(minOperation));
+//        System.out.println(Arrays.toString(path));
         Collections.reverse(sequence);
         return sequence;
     }
