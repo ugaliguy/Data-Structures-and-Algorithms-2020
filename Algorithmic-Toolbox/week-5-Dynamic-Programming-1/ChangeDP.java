@@ -6,20 +6,34 @@ public class ChangeDP {
     	int[] change = new int[m+1];
     	int[] denoms = {1,3,4};
     	change[0] = 0;
-    	for (int i = 0; i <= m; i++) {
+    	for (int i = 1; i <= m; i++) {
     		change[i] = Integer.MAX_VALUE;
     		for (int d : denoms) {
-    			change[i] = Math.min(change[i], change[m-d] + 1);
+    			if (i >= d) {
+    				change[i] = Math.min(change[i], change[i-d] + 1);
+    			}
     		}
     	}
         return change[m];
+//    	int[] change = new int[m + 1];
+//        int[] denoms = {1, 3, 4};
+//        change[0] = 0;
+//        for (int i = 1; i <= m; i++) {
+//            change[i] = Integer.MAX_VALUE;
+//            for (int d : denoms) {
+//                if (i >= d) {
+//                    change[i] = Math.min(change[i], change[i - d] + 1);
+//                }
+//            }
+//        }
+//        return change[m];
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int m = scanner.nextInt();
         System.out.println(getChange(m));
-
+        scanner.close();
     }
 }
 
