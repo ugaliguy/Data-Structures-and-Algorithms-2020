@@ -3,13 +3,6 @@ import java.util.*;
 public class Knapsack {
     static int optimalWeight(int W, int[] w) {
         //write you code here
-//        int result = 0;
-//        for (int i = 0; i < w.length; i++) {
-//          if (result + w[i] <= W) {
-//            result += w[i];
-//          }
-//        }
-//        return result;
     	int values[][] = new int[w.length+1][W+1];
 
         for(int i=1; i<=w.length; i++){ //for each item in w
