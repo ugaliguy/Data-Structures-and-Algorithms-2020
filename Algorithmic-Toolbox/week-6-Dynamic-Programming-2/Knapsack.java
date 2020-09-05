@@ -22,6 +22,7 @@ public class Knapsack {
             w[i] = scanner.nextInt();
         }
         System.out.println(optimalWeight(W, w));
+        scanner.close();
     }
 }
 
