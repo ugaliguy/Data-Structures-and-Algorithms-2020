@@ -23,6 +23,7 @@ public class PlacingParentheses {
         Scanner scanner = new Scanner(System.in);
         String exp = scanner.next();
         System.out.println(getMaximValue(exp));
+        scanner.close();
     }
 }
 
