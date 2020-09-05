@@ -15,6 +15,7 @@ public class Partition3 {
             A[i] = scanner.nextInt();
         }
         System.out.println(partition3(A));
+        scanner.close();
     }
 }
 
