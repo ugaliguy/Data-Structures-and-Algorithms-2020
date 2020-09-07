@@ -53,5 +53,10 @@ class check_brackets {
         }
 
         // Printing answer, write your code here
+        if (opening_brackets_stack.isEmpty()) {
+            System.out.println("Success");
+        } else {
+            System.out.println(opening_brackets_stack.pop().position + 1);
+        }
     }
 }
