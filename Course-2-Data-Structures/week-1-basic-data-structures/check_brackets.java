@@ -35,10 +35,20 @@ class check_brackets {
 
             if (next == '(' || next == '[' || next == '{') {
                 // Process opening bracket, write your code here
+            	Bracket bracket = new Bracket(next, position);
+                opening_brackets_stack.push(bracket);
             }
 
             if (next == ')' || next == ']' || next == '}') {
                 // Process closing bracket, write your code here
+            	Bracket lastOpening = null;
+                if (opening_brackets_stack.size() > 0)
+                    lastOpening = opening_brackets_stack.pop();
+
+                if (lastOpening == null || !lastOpening.Match(next)) {
+                    System.out.println(position + 1);
+                    return;
+                }
             }
         }
 
