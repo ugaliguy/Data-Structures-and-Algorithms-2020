@@ -36,13 +36,6 @@ public class tree_height {
 		int computeHeight() {
                         // Replace this code with a faster implementation
 			int maxHeight = 0;
-//			for (int vertex = 0; vertex < n; vertex++) {
-//				int height = 0;
-//				for (int i = vertex; i != -1; i = parent[i])
-//					height++;
-//				maxHeight = Math.max(maxHeight, height);
-//			}
-			
 			int[] heights = new int[parent.length];
 			for (int v = 0; v < n; v++) {
 				if (heights[v] != 0)
