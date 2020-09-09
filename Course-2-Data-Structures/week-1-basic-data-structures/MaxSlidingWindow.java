@@ -2,6 +2,42 @@ import java.util.*;
 import java.io.*;
 
 public class MaxSlidingWindow  {
+	
+	public int[] maxSlidingWindow(int[] nums, int k) {
+        int n = nums.length;
+        int[] result = new int[n-k+1];
+        int counter = 0;
+        ArrayDeque<Integer> q = new ArrayDeque<>(); //notice that, this is not programmed to interface
+        
+        for(int i=0; i < k; i++) {
+            //skip # 1 step 
+            
+             while(!q.isEmpty() && nums[i] >= nums[q.getLast()]) {
+                 q.removeLast();
+             }
+            
+            q.add(i);
+        }
+        
+        result[counter++] = nums[q.peek()];
+        
+        for(int i=k; i < n; i++) {
+            if(!q.isEmpty() && q.peek() < (i-k+1)) {
+                q.remove();
+            }
+            
+             while(!q.isEmpty() && nums[i] >= nums[q.getLast()]) {
+                 q.removeLast();
+             }
+            
+            q.add(i);
+            
+            result[counter++] = nums[q.peek()];
+        }
+        
+        return result;
+    }
+
     class FastScanner {
         StringTokenizer tok = new StringTokenizer("");
         BufferedReader in;
