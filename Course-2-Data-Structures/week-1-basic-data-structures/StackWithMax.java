@@ -2,66 +2,35 @@ import java.util.*;
 import java.io.*;
 
 public class StackWithMax {
-//	private Stack<Integer> data;
-//	private Stack<Integer> max;
-//
-//	public StackWithMax() {
-//		data = new Stack<Integer>();
-//		max = new Stack<Integer>();
-//	}
-//
-//	public void push(int x) {
-//		data.push(x);
-//		if (max.empty() || x >= max())
-//			max.push(x);
-//	}
-//
-//	public int pop() {
-//		if (data.peek() == max())
-//			max.pop();
-//		return data.pop();
-//	}
-//
-//	public int peek() {
-//		return data.peek();
-//	}
-//
-//	public int max() {
-//		return max.peek();
-//	}
-	
-	  Stack<Integer> stack;
-	  Stack<Integer> maxStack;
 
-	  public StackWithMax() {
-	    stack = new Stack<>();
-	    maxStack = new Stack<>();
-	  }
-
-	  public Integer max() {
-	    if (!maxStack.isEmpty()) {
-	      return maxStack.peek();
-	    }
-	    return -1;
-	  }
-
-	  public Integer pop() {
-	    if (stack.isEmpty()) {
-	      return -1;
-	    }
-	    int popped = stack.pop();
-	    maxStack.pop();
-	    return popped;
-	  }
-
-	  public void push(Integer x) {
-	    stack.push(x);
-	    if (maxStack.isEmpty()) {
-	      maxStack.push(x);
-	    } else {
-	      maxStack.push(Math.max(maxStack.peek(), x));
-	    }
-	  }
+	//Declare two stacks
+    private Stack<Integer> st = new Stack<>();
+    private Stack<Integer> maxSt = new Stack<>();
+    
+    public StackWithMax() {
+		st = new Stack<Integer>();
+		maxSt = new Stack<Integer>();
+	}
+ 
+    public void push(int data) {   	
+    	if (data >= max()) {
+            maxSt.push(data);
+        }
+        st.push(data);
+    }
+ 
+    public void pop() {
+        st.pop();
+        maxSt.pop();
+    }
+ 
+    public int max() {
+    	if (maxSt.isEmpty()) {
+            return Integer.MIN_VALUE;
+        } else {
+            return maxSt.peek();
+        }
+    }
 	
     class FastScanner {
         StringTokenizer tok = new StringTokenizer("");
