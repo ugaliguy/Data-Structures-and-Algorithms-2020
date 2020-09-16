@@ -29,7 +29,24 @@ public class BuildHeap {
           out.println(swap.index1 + " " + swap.index2);
         }
     }
-
+    
+    private void SiftDown(int i) {
+		int minIndex = i;
+		int l = 2*i + 1;
+		if(l < data.length && data[l] < data[minIndex])
+			minIndex = l;
+		int r = 2*i + 2;
+		if(r < data.length && data[r] < data[minIndex])
+			minIndex = r;
+		if(i != minIndex) {
+			swaps.add(new Swap(i, minIndex));
+			int tmp = data[i];
+            data[i] = data[minIndex];
+            data[minIndex] = tmp;
+			SiftDown(minIndex);
+		}
+	}
+    
     private void generateSwaps() {
       swaps = new ArrayList<Swap>();
       // The following naive implementation just sorts 
@@ -39,16 +56,17 @@ public class BuildHeap {
       // but in the worst case gives a quadratic number of swaps.
       //
       // TODO: replace by a more efficient implementation
-      for (int i = 0; i < data.length; ++i) {
-        for (int j = i + 1; j < data.length; ++j) {
-          if (data[i] > data[j]) {
-            swaps.add(new Swap(i, j));
-            int tmp = data[i];
-            data[i] = data[j];
-            data[j] = tmp;
-          }
-        }
-      }
+//      for (int i = 0; i < data.length; ++i) {
+//        for (int j = i + 1; j < data.length; ++j) {
+//          if (data[i] > data[j]) {
+//            swaps.add(new Swap(i, j));
+//            int tmp = data[i];
+//            data[i] = data[j];
+//            data[j] = tmp;
+//          }
+//        }
+//      }
+      
     }
 
     public void solve() throws IOException {
