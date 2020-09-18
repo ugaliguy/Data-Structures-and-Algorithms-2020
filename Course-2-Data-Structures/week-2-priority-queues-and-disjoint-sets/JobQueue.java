@@ -69,24 +69,9 @@ public class JobQueue {
         }
     };
     private void assignJobs() {
-//        // TODO: replace this code with a faster algorithm.
-//        assignedWorker = new int[jobs.length];
-//        startTime = new long[jobs.length];
-//        long[] nextFreeTime = new long[numWorkers];
-//        for (int i = 0; i < jobs.length; i++) {
-//            int duration = jobs[i];
-//            int bestWorker = 0;
-//            for (int j = 0; j < numWorkers; ++j) {
-//                if (nextFreeTime[j] < nextFreeTime[bestWorker])
-//                    bestWorker = j;
-//            }
-//            assignedWorker[i] = bestWorker;
-//            startTime[i] = nextFreeTime[bestWorker];
-//            nextFreeTime[bestWorker] += duration;
-//        }
+        // TODO: replace this code with a faster algorithm.
     	assignedWorker = new int[jobs.length];
         startTime = new long[jobs.length];
-        //long[] nextFreeTime = new long[numWorkers];
         Queue<thread> q = new PriorityQueue<thread>(11,lt);
         for (int i = 0; i < numWorkers; i++) {
             q.add (new thread(i));
