@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 import java.util.StringTokenizer;
 
 public class JobQueue {
@@ -29,22 +30,74 @@ public class JobQueue {
             out.println(assignedWorker[i] + " " + startTime[i]);
         }
     }
+    
+    class thread{
+        public int id;
+        public long next_free_time;
+        thread(int id,long t ){
+            this.id = id;
+            this.next_free_time = t;
+        }
+        thread(int id){
+            this.id = id;
+            this.next_free_time = 0;
+        }
+        public void addtime(long t){
+            this.next_free_time += t;
+        }
 
-    private void assignJobs() {
-        // TODO: replace this code with a faster algorithm.
-        assignedWorker = new int[jobs.length];
-        startTime = new long[jobs.length];
-        long[] nextFreeTime = new long[numWorkers];
-        for (int i = 0; i < jobs.length; i++) {
-            int duration = jobs[i];
-            int bestWorker = 0;
-            for (int j = 0; j < numWorkers; ++j) {
-                if (nextFreeTime[j] < nextFreeTime[bestWorker])
-                    bestWorker = j;
+    }
+    
+    Comparator<thread> lt = new Comparator<thread>() {
+        @Override
+        public int compare(thread thread, thread t1) {
+            if(thread.next_free_time == t1.next_free_time){
+                if(thread.id < t1.id)
+                    return -1;
+                else if(thread.id > t1.id)
+                    return 1;
+                else
+                    return 0;
             }
-            assignedWorker[i] = bestWorker;
-            startTime[i] = nextFreeTime[bestWorker];
-            nextFreeTime[bestWorker] += duration;
+            else if(thread.next_free_time < t1.next_free_time)
+                return -1;
+            else if(thread.next_free_time > t1.next_free_time)
+                return 1;
+            else
+                return 0;
+
+        }
+    };
+    private void assignJobs() {
+//        // TODO: replace this code with a faster algorithm.
+//        assignedWorker = new int[jobs.length];
+//        startTime = new long[jobs.length];
+//        long[] nextFreeTime = new long[numWorkers];
+//        for (int i = 0; i < jobs.length; i++) {
+//            int duration = jobs[i];
+//            int bestWorker = 0;
+//            for (int j = 0; j < numWorkers; ++j) {
+//                if (nextFreeTime[j] < nextFreeTime[bestWorker])
+//                    bestWorker = j;
+//            }
+//            assignedWorker[i] = bestWorker;
+//            startTime[i] = nextFreeTime[bestWorker];
+//            nextFreeTime[bestWorker] += duration;
+//        }
+    	assignedWorker = new int[jobs.length];
+        startTime = new long[jobs.length];
+        //long[] nextFreeTime = new long[numWorkers];
+        Queue<thread> q = new PriorityQueue<thread>(11,lt);
+        for (int i = 0; i < numWorkers; i++) {
+            q.add (new thread(i));
+        }
+        for(int i = 0;i<jobs.length;i++){
+            int duration = jobs[i];
+            thread td = q.poll();
+            assignedWorker[i] = td.id;
+            startTime[i] = td.next_free_time;
+            td.next_free_time+=duration;
+            q.add(td);
         }
     }
 
