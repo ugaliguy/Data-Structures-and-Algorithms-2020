@@ -46,6 +46,20 @@ public class MergingTables {
         // merge two components here
         // use rank heuristic
         // update maximumNumberOfRows
+        if (realDestination.rank < realSource.rank) {
+        	realDestination.parent = realSource;
+        	realSource.numberOfRows += realDestination.numberOfRows;
+        	realDestination.numberOfRows = 0;
+        }
+        else {
+        	realSource.parent = realDestination;
+        	realDestination.numberOfRows +=  realSource.numberOfRows;
+        	realSource.numberOfRows = 0;
+
+        	if (realSource.rank == realDestination.rank)
+        		realDestination.rank += 1;
+        }
+        maximumNumberOfRows = Math.max(Math.max(maximumNumberOfRows, realDestination.numberOfRows), realSource.numberOfRows);
     }
 
     public void run() {
